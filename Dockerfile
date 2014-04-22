@@ -21,7 +21,7 @@ RUN apt-get -qq update
 # Need javascript engine for the asset pipeline
 # Need git in order for capistrano to check out code from repo
 # I like view files in vim:
-RUN apt-get -yqq install curl build-essential libssl-dev zlib1g-dev libpq-dev libxml2 libxslt-dev libxml2-dev nodejs git-core vim && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get -yqq install imagemagick graphicsmagick libmagickcore-dev libmagickwand-dev build-essential libssl-dev zlib1g-dev libpq-dev libxml2 libxslt-dev libxml2-dev nodejs git-core vim && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "source /etc/container_environment.sh" >> /root/.bashrc
 
