@@ -14,14 +14,13 @@ FROM phusion/passenger-ruby20
 # Set correct environment variables.
 ENV HOME /root
 
-# ...put your own build instructions here...
-RUN apt-get -qq update
+# first we update openssl for heartbleed then
 # libpq-dev is required for the pg gem,
 # libxml2 libxslt-dev libxml2-dev are required by nokogiri,
 # Need javascript engine for the asset pipeline
 # Need git in order for capistrano to check out code from repo
 # I like view files in vim:
-RUN apt-get -yqq install imagemagick graphicsmagick libmagickcore-dev libmagickwand-dev build-essential libssl-dev zlib1g-dev libpq-dev libxml2 libxslt-dev libxml2-dev nodejs git-core vim && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && apt-get -yqq install python-software-properties software-properties-common && add-apt-repository ppa:george-edison55/openssl-heartbleed-fix -y && apt-get update && apt-get -yqq upgrade && apt-get -yqq install imagemagick graphicsmagick libmagickcore-dev libmagickwand-dev build-essential libssl-dev zlib1g-dev libpq-dev libxml2 libxslt-dev libxml2-dev nodejs git-core vim && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "source /etc/container_environment.sh" >> /root/.bashrc
 
