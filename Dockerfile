@@ -13,7 +13,6 @@ FROM phusion/passenger-ruby20
 
 # Set correct environment variables.
 ENV HOME /root
-
 # first we update openssl for heartbleed then
 # libpq-dev is required for the pg gem,
 # libxml2 libxslt-dev libxml2-dev are required by nokogiri,
